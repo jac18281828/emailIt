@@ -11,13 +11,14 @@ smtphost = 'mail.email.com'
 smtpport = 465
 
 
-def emailMsg(u, p, message):
+def emailMsg(u, p, subject, message):
     msg = MIMEText(message)
     msg['From'] = myemailaddr
 
-    msg['Subject'] = "Text Alert";
+    msg['Subject'] = subject
     emaillist = toemailaddr
     msg['To'] = emaillist[0]
+    msg['Cc'] = ','.join(emaillist[1:])
 
     try:
         server = smtplib.SMTP_SSL(smtphost, smtpport)        
@@ -31,7 +32,7 @@ def emailMsg(u, p, message):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 0:
+    if len(sys.argv) == 1:
         print('%s message...' % sys.argv[0])
     else:
-        emailMsg(emailusername, emailpassword, ' '.join(sys.argv[1:]))
+        emailMsg(emailusername, emailpassword, sys.argv[1], ' '.join(sys.argv[1:]))
