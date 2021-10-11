@@ -15,4 +15,4 @@ COPY emailit.py .
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 ENV PYTHONPATH=.
-CMD python3 emailit.py
+CMD python3 emailit.py done
