@@ -18,7 +18,8 @@ def emailMsg(u, p, subject, message):
     msg['Subject'] = subject
     emaillist = toemailaddr
     msg['To'] = emaillist[0]
-    msg['Cc'] = ','.join(emaillist[1:])
+    if len(emaillist) > 1:
+        msg['Cc'] = ','.join(emaillist[1:])
 
     try:
         server = smtplib.SMTP_SSL(smtphost, smtpport)        
