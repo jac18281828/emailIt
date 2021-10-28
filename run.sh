@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker build . -t email:1 && docker run --rm -i -t email:1
+VERSION=$(date +%m%d%y)
+
+docker build . -t email:${VERSION} && docker run --rm -i -t email:${VERSION}
